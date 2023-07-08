@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,35 +11,73 @@
       background-color: #f8f9fa;
       padding: 10px;
       margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+css
+Copy code
+.navbar a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
 
-    .navbar a {
-      margin-right: 10px;
-      text-decoration: none;
-    }
+.navbar a:hover {
+  color: #555;
+}
 
-    .navbar a:hover {
-      text-decoration: underline;
-    }
+.navbar .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links a:not(:last-child) {
+  margin-right: 20px;
+}
+
+.navbar .user-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .user-links a:not(:last-child) {
+  margin-right: 10px;
+}
   </style>
 </head>
 <body>
   <div class="navbar">
-    <a href="/">Blog</a>  <!-- Replace "/" with the URL for your homepage -->
-    {% if user.is_authenticated %}
-      <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-      <a href="{% url 'login' %}">Login</a>
-      <a href="{% url 'user_register' %}">Register</a>  <!-- Replace "register" with your register URL name if different -->
-    {% endif %}
+    <div class="nav-links"> 
+      <a href="{% url 'blog:post_list' %}">Blog</a> <!-- Replace "/" with the URL for your homepage -->
+      {% if user.is_authenticated %}
+        {% if request.user.profile %}
+          <a href="{% url 'blog:profile_detail' request.user.profile.id %}">Profile</a> <!-- Replace "/" with the URL for your homepage -->
+        {% else %}
+          <a href="{% url 'blog:profile_create' %}">Profile</a> <!-- Replace "/" with the URL for your homepage -->
+        {% endif %}
+        <a href="{% url 'blog:users_list' %}">Users</a> <!-- Replace "/" with the URL for your homepage -->
+
+      {% endif %}
+    </div>
+    <div class="user-links">
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'blog:user_register' %}">Register</a> <!-- Replace "register" with your register URL name if different -->
+      {% endif %}
+    </div>
   </div>
   <div id="content">
     {% block content %}
     {% endblock %}
   </div>
   <div id="sidebar">
-    <h2>My blog123  </h2>
-    <p>This is my blog1234.</p>
+    <h2>My blog</h2>
+    <p>This is my blog</p>
   </div>
 </body>
 </html>

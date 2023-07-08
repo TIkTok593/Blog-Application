@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}User Detail{% endblock %}
+{% block content %}
+  <h1>User Detail</h1>
+  <h2>{{ user.username }}</h2>
+  
+  <h3>Profile Information</h3>
+  <p><strong>Date of Birth:</strong> {{ user.profile.date_of_birth }}</p>
+  {% if user.profile.photo %}
+    <img src="{{ user.profile.photo.url }}" alt="Profile Photo">
+  {% else %}
+    <p>No photo available</p>
+  {% endif %}
+  
+  <h3>Posts</h3>
+  <ul>
+    {% for post in posts %}
+      <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% empty %}
+      <li>No posts found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,6 +1,13 @@
-{% extends "blog/base.html" %}
+{% extends "base.html" %}
 {% block title %}My Blog{% endblock %}
 {% block content %}
+  <style>
+    .btn-custom {
+      border: 2px solid #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+  </style>
   <h1>My Blog</h1>
   {% for post in posts %}
     <h2>
@@ -13,6 +20,9 @@
       Published {{ post.publish }} by {{ post.author }}
     </p>
     {{ post.body|truncatechars:20|linebreaks }}
-    {% endfor %}  
+  {% endfor %}  
+  <div>
+    <a href="{% url 'blog:post_create' %}" class="btn btn-primary btn-custom">Create a post</a>
+  </div>
     {% include "pagination.html" with page=posts %}
 {% endblock %}

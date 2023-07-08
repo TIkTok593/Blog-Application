@@ -1,28 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Create a Post</h1>
+    <h1>Create a Profile</h1>
     <div class="create-post-form">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-field">
-                <label for="{{ form.title.id_for_label }}">Title:</label>
-                {{ form.title }}
+                <label for="{{ form.date_of_birth.id_for_label }}">Date Of Birth:</label>
+                <input type="date" id="{{ form.date_of_birth.id_for_label }}" name="{{ form.date_of_birth.name }}" value="{{ form.date_of_birth.value }}">
+                {% for error in form.date_of_birth.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-field">
-                <label for="{{ form.body.id_for_label }}">Body:</label>
-                {{ form.body }}
+                <label for="{{ form.photo.id_for_label }}">Photo:</label>
+                {{ form.photo }}
+                {% for error in form.photo.errors %}
+                    <span class="error-message">{{ error }}</span>
+                {% endfor %}
             </div>
-            <div class="form-field">
-                <label for="{{ form.status.id_for_label }}">Status:</label>
-                {{ form.status }}
-            </div>
-            <div class="form-field">
-                <label for="{{ form.tag.id_for_label }}">Tag:</label>
-                {{ form.tag }}
-            </div>
-            <div class="form-field">
-                <input type="submit" value="Create">
-            </div>
+            <input type="submit" value="Create Post">
         </form>
     </div>
     <style>

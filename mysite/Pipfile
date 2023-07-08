@@ -8,6 +8,7 @@ django = "*"
 asgiref = "==3.5.2"
 sqlparse = "==0.4.2"
 django-environ = "*"
+pillow = "*"
 
 [dev-packages]
 

@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from django.conf import settings
 
 from taggit.managers import TaggableManager
 
@@ -62,4 +63,20 @@ class Comment(models.Model):
             models.Index(fields=['created'])
         ]
     def __str__(self) -> str:
-        return f'Comment by {self.name} on {self.post}'
+        return f'Comment by {self.name}'
+    
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
+                                on_delete=models.CASCADE,
+                                related_name='profile')  # if the user has been deleted the related tuple will be deleted
+    date_of_birth = models.DateField(blank=True, null=True)  # This field will be optional, and if it is empty, it's value will be Null
+    photo = models.ImageField(upload_to='users/%Y/%m/%d',
+                              blank=True)
+
+    def __str__(self):
+        return f'Profile of {self.user.username}'
+    
+
+
+
