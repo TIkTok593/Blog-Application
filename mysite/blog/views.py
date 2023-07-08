@@ -317,7 +317,8 @@ class ProfileDetailView(DetailView):
     
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        user_id = self.kwargs['pk']
+        profile_id = self.kwargs['pk']
+        user_id = Profile.objects.get(id=profile_id).user
         posts = Post.objects.filter(author=user_id)
         context['posts'] = posts
         return context
