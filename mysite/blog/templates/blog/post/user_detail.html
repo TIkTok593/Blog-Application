@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block title %}User Detail{% endblock %}
 {% block content %}
+  <style>
+    .edit-button {
+      color: blue;
+      margin-left: 10px;
+    }
+  </style>
   <h1>User Detail</h1>
   <h2>{{ user.username }}</h2>
   
@@ -15,7 +21,12 @@
   <h3>Posts</h3>
   <ul>
     {% for post in posts %}
-      <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        {% if request.user.id == post.author.id %}
+          <a href="{% url 'blog:post_update' post.id%}" class="edit-button">Edit</a>  <!-- Add the edit button -->
+        {% endif %}
+      </li>
     {% empty %}
       <li>No posts found.</li>
     {% endfor %}

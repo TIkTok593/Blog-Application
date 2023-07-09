@@ -4,7 +4,7 @@ from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, InvalidPage
-from django.views.generic import ListView, CreateView, DetailView, FormView
+from django.views.generic import ListView, CreateView, DetailView, FormView, UpdateView
 from django.utils.decorators import method_decorator
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
@@ -99,7 +99,26 @@ class PostCreateView(CreateView):
     
     def get_success_url(self) -> str:
         return reverse('blog:post_list')
+    
 
+@method_decorator(login_required, name='dispatch')
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'blog/post/post_update.html'
+    pk_url_kwarg = 'id'
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        title = form.cleaned_data['title']
+        slug = slugify(title)
+        form.instance.slug = slug
+        form.instance.author = self.request.user
+        # form.instance.user = self.request.user
+
+        return super().form_valid(form)
+    
+    def get_success_url(self) -> str:
+        return reverse('blog:post_list')
 
 @method_decorator(login_required, name='dispatch')
 class PostDetailView(DetailView):
