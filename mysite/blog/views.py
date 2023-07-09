@@ -57,6 +57,10 @@ class PostListView(ListView):
             
 
 def post_list(request, tag_slug=None):
+    """
+    Displays a list of published posts with pagination and optional filtering by tag.
+    """
+
     post_list = Post.published.all()
     tag = None
     if tag_slug:
@@ -84,6 +88,10 @@ def post_list(request, tag_slug=None):
 
 @method_decorator(login_required, name='dispatch')
 class PostCreateView(CreateView):
+    """
+    Allows authenticated users to create a new blog post.
+    """
+
     model = Post
     form_class = PostForm
     template_name = 'blog/post/post_create.html'
@@ -103,6 +111,9 @@ class PostCreateView(CreateView):
 
 @method_decorator(login_required, name='dispatch')
 class PostUpdateView(UpdateView):
+    """
+    Allows authenticated users to update an existing blog post.
+    """
     model = Post
     form_class = PostForm
     template_name = 'blog/post/post_update.html'
@@ -122,6 +133,9 @@ class PostUpdateView(UpdateView):
 
 @method_decorator(login_required, name='dispatch')
 class PostDetailView(DetailView):
+    """
+    Displays the details of a single blog post, including associated comments and a comment submission form.
+    """
     model = Post
     template_name = 'blog/post/detail.html'
     # queryset = Post.objects.all()
@@ -149,35 +163,12 @@ class PostDetailView(DetailView):
         return context
 
 
-
-@login_required
-def post_detail(request, year, month, day, post):
-    # try:
-    #     post = Post.published.get(id=id)
-    # except Post.DoesNotExist:
-    #     raise Http404('No Post found.')
-    # return render(request, 'blog/post/detail.html', {'post': post})
-    post = get_object_or_404(Post, 
-                            slug=post,
-                            publish__year=year,
-                            publish__month=month,
-                            publish__day = day,
-                            status=Post.Status.PUBLISHED)
-    
-    comments = post.comments.filter(active=True) # we can use comments, because we defined the related_name in Comments's Model
-    form = CommentForm()
-    return render(request,
-     'blog/post/detail.html',
-      {'post': post,
-       'comments': comments,
-       'form': form
-       }
-    )
-
-
-
 @method_decorator(login_required, name='dispatch')
 class PostShareView(View):
+    """
+    Displays a form to share a blog post via email and sends the email upon form submission.
+    """
+
     template_name = 'blog/post/share.html'
     form_class = EmailPostForm
 
@@ -203,35 +194,11 @@ class PostShareView(View):
         return render(request, self.template_name, context)
 
 
-def post_share(request, post_id):
-    # Retrieve post by id
-    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
-    sent = False
-    if request.method == 'POST':
-        # Form was submitted
-        form = EmailPostForm(request.POST)
-        if form.is_valid():
-            # Form fields passed validation
-            cd = form.cleaned_data
-            post_url = request.build_absolute_uri(
-                post.get_absolute_url())
-            subject = f"{cd['name']} recommends you read " \
-                      f"{post.title}"
-            message = f"Read {post.title} at {post_url}\n\n" \
-                f"{cd['name']}\'s comments: {cd['comments']}"
-            send_mail(subject, message, 'abuyahyadiab@gmail.com',
-                      [cd['to']])
-            sent = True
-
-
-    else:
-        form = EmailPostForm()
-    return render(request, 'blog/post/share.html', {'post': post,
-                                                    'form': form, 'sent': sent})
-
-
 @method_decorator(login_required, name='dispatch')
 class PostCommentView(View):
+    """
+    Handles the submission of comments for a specific blog post.
+    """
     template_name = 'blog/post/comment.html'
     form_class = CommentForm
 
@@ -246,25 +213,10 @@ class PostCommentView(View):
             return render(request, 'blog/post/comment.html', {'post': post, 'form': form, 'comment': comment})
 
 
-
-
-@require_POST
-def post_comment(request, post_id):
-    # here the user has been posted a comment to a specific post
-    # I'll try to fetch this post, if not exist, an error will be generated
-    # If it exist, we will assign this post to a field on that comment's object
-    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED) # you have to assure that this is a published post not a draft one.
-    comment = None
-    form = CommentForm(request.POST) # by using request.POST, we get the form object that has been submitted, and we pass it to comment form to check it's validation
-    if form.is_valid():
-        comment = form.save(commit=False)
-        comment.post = post
-        comment.save()
-    return render(request, 'blog/post/comment.html', {'post': post, 'form': form, 'comment': comment})
-
-
-
 class UserRegisterView(View):
+    """
+    Handles user registration, rendering a registration form and creating a new user upon form submission.
+    """
     def get(self, request):
         user_form = UserRegistrationForm()
         return render(request,
@@ -282,28 +234,10 @@ class UserRegisterView(View):
             return render(request, 'blog/register.html', {'user_form': user_form})
 
 
-
-def user_register(request):
-    if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            new_user = user_form.save(commit=False)  # don't save the user now, because we want to add on it.
-            new_user.set_password(  # this method is for hashing passwords rather than put it in a plain text.
-                user_form.cleaned_data['password1']
-            )
-            new_user.save()
-            return render(request, 'blog/register_done.html', {'user_form': user_form})
-    else:
-        user_form = UserRegistrationForm()
-    return render(request,
-                  'blog/register.html',
-                  {'user_form': user_form}
-                  )
-
-
-
-
 class ProfileCreateView(LoginRequiredMixin, CreateView):
+    """
+    Allows authenticated users to create a user profile.
+    """
     model = Profile
     form_class = ProfileForm
     template_name='blog/post/profile_create.html'
@@ -315,13 +249,11 @@ class ProfileCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     kwargs['user'] = self.request.user
-    #     return kwargs
-
 
 class ProfileDetailView(DetailView):
+    """
+    Displays the details of a user profile, including associated blog posts.
+    """
     template_name = 'blog/post/profile_detail.html'
     context_object_name = 'profile'
     pk_url_kwarg = 'pk'
@@ -344,12 +276,18 @@ class ProfileDetailView(DetailView):
 
     
 class UserListView(ListView):
+    """
+    Displays a list of all users.
+    """
     template_name = 'blog/post/users_list.html'
     queryset = User.objects.all()
     context_object_name = 'users'
 
 
 class UserDetailView(DetailView):
+    """
+    Displays the details of a specific user, including their associated blog posts and profile information.
+    """
     template_name = 'blog/post/user_detail.html'
     context_object_name = 'user'
     pk_url_kwarg = 'id'
