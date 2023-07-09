@@ -23,7 +23,7 @@
     {% for post in posts %}
       <li>
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        {% if request.user.id == post.author.id %}
+        {% if request.user.id == post.author.id or request.user.is_superuser%}
           <a href="{% url 'blog:post_update' post.id%}" class="edit-button">Edit</a>  <!-- Add the edit button -->
         {% endif %}
       </li>
