@@ -1,24 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Create an account{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Create an account' %}{% endblock %}
 {% block content %}
-  <h1>Create an account</h1>
-  <p>Please sign up using the following form:</p>
+
+  <h1>{% trans 'Create an account' %}</h1>
+  <p>{% trans 'Please sign up using the following form:' %}</p>
   <form method="post">
     {{ user_form.as_p }}
     {% csrf_token %}
     {% if user_form.errors %}
       <div class="errors">
-        <p class="error">Please correct the following errors:</p>
+        <p class="error">{% trans 'Please correct the following errors:' %}</p>
         {{ user_form.errors }}
       </div>
     {% endif %}
-    <p><input type="submit" value="Create my account"></p>
+    <p><input type="submit" value="{% trans 'Create my account' %}"></p>
   </form>
   <div class="social">
     <ul>
         <li class="facebook">
             <a href="{% url "social:begin" "facebook" %}" class="social-link">
-                Sign up with Facebook
+                {% trans 'Sign up with Facebook' %}
             </a>
         </li>
     </ul>

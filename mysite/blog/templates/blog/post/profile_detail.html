@@ -1,30 +1,34 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
+
   <style>
     .edit-button {
       color: blue;
       margin-left: 10px;
     }
   </style>
-    <h1>Profile Details</h1>
-    <p><strong>User:</strong> {{ profile.user }}</p>
-    <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
-    {% if profile.photo %}
-        <img src="{{ profile.photo.url }}" alt="Profile Photo">
-    {% else %}
-        <p>No photo available</p>
-    {% endif %}
-    <h3>Posts</h3>
-    <ul>
-      {% for post in posts %}
-        <li>
-          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-          {% if request.user.id == post.author.id or request.user.is_superuser %}
-            <a href="{% url 'blog:post_update' post.id%}" class="edit-button">Edit</a>  <!-- Add the edit button -->
-          {% endif %}
-        </li>
-      {% empty %}
-        <li>No posts found.</li>
-      {% endfor %}
-    </ul>
+  <h1>{% trans 'Profile Details' %}</h1>
+  <p><strong>{% trans 'User' %}:</strong> {{ profile.user }}</p>
+  <p><strong>{% trans 'Date of Birth' %}:</strong> {{ profile.date_of_birth }}</p>
+  {% if profile.photo %}
+      <img src="{{ profile.photo.url }}" alt="{% trans 'Profile Photo' %}">
+  {% else %}
+      <p>{% trans 'No photo available' %}</p>
+  {% endif %}
+  <h3>{% trans 'Posts' %}</h3>
+  <ul>
+    {% for post in posts %}
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        {% if request.user.id == post.author.id or request.user.is_superuser %}
+          <a href="{% url 'blog:post_update' post.id%}" class="edit-button">{% trans 'Edit' %}</a>  <!-- Add the edit button -->
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>{% trans 'No posts found.' %}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
+
+

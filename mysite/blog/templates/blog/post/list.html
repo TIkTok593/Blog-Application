@@ -1,6 +1,8 @@
 {% extends "base.html" %}
-{% block title %}My Blog{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'My Blog' %}{% endblock %}
 {% block content %}
+
   <style>
     .btn-custom {
       border: 2px solid #000;
@@ -8,21 +10,21 @@
       border-radius: 5px;
     }
   </style>
-  <h1>My Blog</h1>
+  <h1>{% trans 'My Blog' %}</h1>
   {% for post in posts %}
     <h2>
       <a href="{{ post.get_absolute_url }}">
         {{ post.title }}
       </a>
     </h2>
-    <p class="tags">Tags: {{ post.tag.all|join:", "}}</p>
+    <p class="tags">{% trans 'Tags' %}: {{ post.tag.all|join:", "}}</p>
     <p class="date">
-      Published {{ post.publish }} by {{ post.author }}
+      {% trans 'Published' %} {{ post.publish }} {% trans 'by' %} {{ post.author }}
     </p>
     {{ post.body|truncatechars:20|linebreaks }}
   {% endfor %}  
   <div>
-    <a href="{% url 'blog:post_create' %}" class="btn btn-primary btn-custom">Create a post</a>
+    <a href="{% url 'blog:post_create' %}" class="btn btn-primary btn-custom">{% trans 'Create a post' %}</a>
   </div>
     {% include "pagination.html" with page=posts %}
 {% endblock %}

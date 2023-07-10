@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Update Post{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Update Post' %}{% endblock %}
 {% block content %}
-  <h1>Update Post</h1>
+
+  <h1>{% trans 'Update Post' %}</h1>
   <form method="POST" action="{% url 'blog:post_update' post.id %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Update</button>
+    <button type="submit">{% trans 'Update' %}</button>
   </form>
 {% endblock %}

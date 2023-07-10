@@ -1,117 +1,117 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block title %}Log-in{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Log-in' %}{% endblock %}
 
 {% block content %}
-    <h1>Log-in Page</h1>
+    <h1>{% trans 'Log-in Page' %}</h1>
     {% if form.errors %}
         <p class="error">
-            Your username and password didn't match. Please try again.
+        {% trans 'Your username and password didn't match. Please try again.' %}
         </p>
-    {% else %}
+        {% else %}
         <p>
-            Please use the following form to log in.
-            If you don't have an account, <a href="{% url 'blog:user_register' %}">register here</a>.
+        {% trans 'Please use the following form to log in.' %}
+        {% trans 'If you don't have an account,' %} <a href="{% url 'blog:user_register' %}">{% trans 'register here' %}</a>.
         </p>
     {% endif %}
     <div class="login-form">
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <div class="form-field">
-                <label for="{{ form.username.id_for_label }}">Username:</label>
+                <label for="{{ form.username.id_for_label }}">{% trans 'Username' %}:</label>
                 {{ form.username }}
             </div>
             <div class="form-field">
-                <label for="{{ form.password.id_for_label }}">Password:</label>
-                {{ form.password }}
+            <label for="{{ form.password.id_for_label }}">{% trans 'Password' %}:</label>
+            {{ form.password }}
             </div>
             <div class="form-field">
-                <input type="hidden" name="next" value="{{ next }}">
-                <input type="submit" value="Log in" class="btn">
+            <input type="hidden" name="next" value="{{ next }}">
+            <input type="submit" value="{% trans 'Log in' %}" class="btn">
             </div>
         </form>
         <p class="password-reset">
-            <a href="{% url 'password_reset' %}">Forgotten your password?</a>
+        <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password?' %}</a>
         </p>
     </div>
     <div class="social">
         <ul>
             <li class="facebook">
-                <a href="{% url "social:begin" "facebook" %}" class="social-link">
-                    Sign in with Facebook
-                </a>
+            <a href="{% url "social:begin" "facebook" %}" class="social-link">
+            {% trans 'Sign in with Facebook' %}
+            </a>
             </li>
         </ul>
     </div>
+    {% endblock %}
+
+    {% block styles %}
+    <style>
+    .login-form {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    }
+
+    .form-field {
+        margin-bottom: 10px;
+    }
+    
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+    
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    .password-reset {
+        margin-top: 10px;
+    }
+    
+    .social {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .social ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .social li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .social-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+    }
+</style>
 {% endblock %}
 
-{% block styles %}
-    <style>
-        .login-form {
-            max-width: 300px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-        }
-        
-        .form-field {
-            margin-bottom: 10px;
-        }
-        
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-        }
-        
-        .btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        
-        .password-reset {
-            margin-top: 10px;
-        }
-        
-        .social {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .social ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .social li {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        
-        .social-link {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
-{% endblock %}

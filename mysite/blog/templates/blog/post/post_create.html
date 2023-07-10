@@ -1,64 +1,70 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
-    <h1>Create a Post</h1>
+    <h1>{% trans 'Create a Post' %}</h1>
     <div class="create-post-form">
         <form method="post">
-            {% csrf_token %}
-            <div class="form-field">
-                <label for="{{ form.title.id_for_label }}">Title:</label>
-                {{ form.title }}
-            </div>
-            <div class="form-field">
-                <label for="{{ form.body.id_for_label }}">Body:</label>
-                {{ form.body }}
-            </div>
-            <div class="form-field">
-                <label for="{{ form.status.id_for_label }}">Status:</label>
-                {{ form.status }}
-            </div>
-            <div class="form-field">
-                <label for="{{ form.tag.id_for_label }}">Tag:</label>
-                {{ form.tag }}
-            </div>
-            <div class="form-field">
-                <input type="submit" value="Create">
-            </div>
-        </form>
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="{{ form.title.id_for_label }}">{% trans 'Title' %}:</label>
+            {{ form.title }}
+        </div>
+    <div class="form-field">
+        <label for="{{ form.body.id_for_label }}">{% trans 'Body' %}:</label>
+        {{ form.body }}
+    </div>
+    <div class="form-field">
+        <label for="{{ form.status.id_for_label }}">{% trans 'Status' %}:</label>
+        {{ form.status }}
+    </div>
+    <div class="form-field">
+        <label for="{{ form.tag.id_for_label }}">{% trans 'Tag' %}:</label>
+        {{ form.tag }}
+    </div>
+    <div class="form-field">
+        <input type="submit" value="{% trans 'Create' %}">
+    </div>
+    </form>
     </div>
     <style>
         .create-post-form {
-            margin-top: 20px;
+        margin-top: 20px;
         }
-
+        
         .form-field {
-            margin-bottom: 10px;
-        }
+        margin-bottom: 10px;
+    }
 
-        .form-field label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    .form-field label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-        .form-field input[type="text"],
-        .form-field textarea,
-        .form-field select {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-        }
+    .form-field input[type="text"],
+    .form-field textarea,
+    .form-field select {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
 
-        .form-field input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
+    .form-field input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+</style>
+        
 {% endblock content %}
+
+
+
+

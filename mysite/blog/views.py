@@ -13,6 +13,8 @@ from django.http import HttpRequest, HttpResponse
 from django.utils.text import slugify
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import activate
+
 
 from taggit.models import Tag
 from .models import Post, Comment, Profile, User
@@ -20,7 +22,15 @@ from .forms import EmailPostForm, CommentForm,\
                    PostForm, UserRegistrationForm,\
                    ProfileForm
 
-class PostListView(ListView):
+
+class BaseView(View):
+    def dispatch(self, request, *args, **kwargs):
+        language = request.LANGUAGE_CODE
+        activate(language)
+        return super().dispatch(request, *args, **kwargs)
+
+
+class PostListView(BaseView, ListView):
     queryset = Post.published.all()
     context_object_name = 'posts'
     paginate_by = 3
@@ -60,6 +70,8 @@ def post_list(request, tag_slug=None):
     """
     Displays a list of published posts with pagination and optional filtering by tag.
     """
+    language = request.LANGUAGE_CODE
+    activate(language)
 
     post_list = Post.published.all()
     tag = None
@@ -87,7 +99,7 @@ def post_list(request, tag_slug=None):
 
 
 @method_decorator(login_required, name='dispatch')
-class PostCreateView(CreateView):
+class PostCreateView(BaseView, CreateView):
     """
     Allows authenticated users to create a new blog post.
     """
@@ -108,9 +120,10 @@ class PostCreateView(CreateView):
     def get_success_url(self) -> str:
         return reverse('blog:post_list')
     
+    
 
 @method_decorator(login_required, name='dispatch')
-class PostUpdateView(UpdateView):
+class PostUpdateView(BaseView, UpdateView):
     """
     Allows authenticated users to update an existing blog post.
     """
@@ -132,7 +145,7 @@ class PostUpdateView(UpdateView):
         return reverse('blog:post_list')
 
 @method_decorator(login_required, name='dispatch')
-class PostDetailView(DetailView):
+class PostDetailView(BaseView, DetailView):
     """
     Displays the details of a single blog post, including associated comments and a comment submission form.
     """
@@ -164,7 +177,7 @@ class PostDetailView(DetailView):
 
 
 @method_decorator(login_required, name='dispatch')
-class PostShareView(View):
+class PostShareView(BaseView, View):
     """
     Displays a form to share a blog post via email and sends the email upon form submission.
     """
@@ -195,7 +208,7 @@ class PostShareView(View):
 
 
 @method_decorator(login_required, name='dispatch')
-class PostCommentView(View):
+class PostCommentView(BaseView, View):
     """
     Handles the submission of comments for a specific blog post.
     """
@@ -213,7 +226,7 @@ class PostCommentView(View):
             return render(request, 'blog/post/comment.html', {'post': post, 'form': form, 'comment': comment})
 
 
-class UserRegisterView(View):
+class UserRegisterView(BaseView, View):
     """
     Handles user registration, rendering a registration form and creating a new user upon form submission.
     """
@@ -234,7 +247,7 @@ class UserRegisterView(View):
             return render(request, 'blog/register.html', {'user_form': user_form})
 
 
-class ProfileCreateView(LoginRequiredMixin, CreateView):
+class ProfileCreateView(BaseView, LoginRequiredMixin, CreateView):
     """
     Allows authenticated users to create a user profile.
     """
@@ -250,7 +263,7 @@ class ProfileCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ProfileDetailView(DetailView):
+class ProfileDetailView(BaseView, DetailView):
     """
     Displays the details of a user profile, including associated blog posts.
     """
@@ -275,7 +288,7 @@ class ProfileDetailView(DetailView):
         return context
 
     
-class UserListView(ListView):
+class UserListView(BaseView, ListView):
     """
     Displays a list of all users.
     """
@@ -284,7 +297,7 @@ class UserListView(ListView):
     context_object_name = 'users'
 
 
-class UserDetailView(DetailView):
+class UserDetailView(BaseView, DetailView):
     """
     Displays the details of a specific user, including their associated blog posts and profile information.
     """

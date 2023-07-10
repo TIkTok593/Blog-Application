@@ -1,0 +1,432 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-09 12:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME EMAIL@ADDRESS\n"
+"Language-Team: LANGUAGE LL@li.org\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: blog/templates/base.html:54
+msgid "Blog"
+msgstr "مدونة"
+
+#: blog/templates/base.html:57 blog/templates/base.html:59
+msgid "Profile"
+msgstr "حساب تعريفي"
+
+#: blog/templates/base.html:61
+msgid "Users"
+msgstr "المستخدمون"
+
+#: blog/templates/base.html:66
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: blog/templates/base.html:68
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: blog/templates/base.html:69
+msgid "Register"
+msgstr "إنشاء حساب"
+
+#: blog/templates/base.html:78
+msgid "My blog"
+msgstr "مدونتي"
+
+#: blog/templates/base.html:79
+msgid "This is my blog"
+msgstr "هذه مدونتي"
+
+#: blog/templates/blog/post/comment.html:2
+msgid "Add a comment"
+msgstr "إضافة تعليق"
+
+#: blog/templates/blog/post/comment.html:5
+msgid "Your comment has been added"
+msgstr "تمت إضافة تعليقك"
+
+#: blog/templates/blog/post/comment.html:6
+msgid "Back to the post"
+msgstr "العودة إلى المنشور"
+
+#: blog/templates/blog/post/detail.html:7 blog/templates/blog/post/list.html:21
+msgid "Published"
+msgstr "نشرت"
+
+#: blog/templates/blog/post/detail.html:7
+#: blog/templates/blog/post/detail.html:23
+#: blog/templates/blog/post/list.html:21
+msgid "by"
+msgstr "بواسطة"
+
+#: blog/templates/blog/post/detail.html:12
+msgid "Share this post"
+msgstr "مشاركة هذا المنشور"
+
+#: blog/templates/blog/post/detail.html:17
+msgid "comment"
+msgstr "تعليق"
+
+#: blog/templates/blog/post/detail.html:23
+msgid "Comment"
+msgstr "تعليق"
+
+#: blog/templates/blog/post/detail.html:29
+msgid "There are no comments."
+msgstr "لا توجد تعليقات."
+
+#: blog/templates/blog/post/list.html:2 blog/templates/blog/post/list.html:12
+msgid "My Blog"
+msgstr "مدونتي"
+
+#: blog/templates/blog/post/list.html:19
+msgid "Tags"
+msgstr "العلامات"
+
+#: blog/templates/blog/post/list.html:26
+msgid "Create a post"
+msgstr "إنشاء منشور"
+
+#: blog/templates/blog/post/post_create.html:3
+msgid "Create a Post"
+msgstr "إنشاء منشور"
+
+#: blog/templates/blog/post/post_create.html:8
+msgid "Title"
+msgstr "العنوان"
+
+#: blog/templates/blog/post/post_create.html:12
+msgid "Body"
+msgstr "المحتوى"
+
+#: blog/templates/blog/post/post_create.html:16
+msgid "Status"
+msgstr "الحالة"
+
+#: blog/templates/blog/post/post_create.html:20
+msgid "Tag"
+msgstr "الوسم"
+
+#: blog/templates/blog/post/post_create.html:24
+msgid "Create"
+msgstr "إنشاء"
+
+#: blog/templates/blog/post/post_update.html:2
+#: blog/templates/blog/post/post_update.html:5
+msgid "Update Post"
+msgstr "تحديث المنشور"
+
+#: blog/templates/blog/post/post_update.html:9
+msgid "Update"
+msgstr "تحديث"
+
+#: blog/templates/blog/post/profile_create.html:3
+msgid "Create a Profile"
+msgstr "إنشاء ملف تعريف"
+
+#: blog/templates/blog/post/profile_create.html:8
+msgid "Date Of Birth"
+msgstr "تاريخ الميلاد"
+
+#: blog/templates/blog/post/profile_create.html:15
+msgid "Photo"
+msgstr "صورة"
+
+#: blog/templates/blog/post/profile_create.html:21
+msgid "Create Post"
+msgstr "إنشاء منشور"
+
+#: blog/templates/blog/post/profile_detail.html:10
+msgid "Profile Details"
+msgstr "تفاصيل الملف الشخصي"
+
+#: blog/templates/blog/post/profile_detail.html:11
+msgid "User"
+msgstr "المستخدم"
+
+#: blog/templates/blog/post/profile_detail.html:12
+#: blog/templates/blog/post/user_detail.html:14
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#: blog/templates/blog/post/profile_detail.html:14
+#: blog/templates/blog/post/user_detail.html:16
+msgid "Profile Photo"
+msgstr "صورة الملف الشخصي"
+
+#: blog/templates/blog/post/profile_detail.html:16
+#: blog/templates/blog/post/user_detail.html:18
+msgid "No photo available"
+msgstr "لا توجد صورة متاحة"
+
+#: blog/templates/blog/post/profile_detail.html:18
+#: blog/templates/blog/post/user_detail.html:20
+msgid "Posts"
+msgstr "المشاركات"
+
+#: blog/templates/blog/post/profile_detail.html:24
+#: blog/templates/blog/post/user_detail.html:26
+msgid "Edit"
+msgstr "تحرير"
+
+#: blog/templates/blog/post/profile_detail.html:28
+#: blog/templates/blog/post/user_detail.html:30
+msgid "No posts found."
+msgstr "لم يتم العثور على أية منشورات."
+
+#: blog/templates/blog/post/share.html:2
+msgid "Share a post"
+msgstr "مشاركة منشور"
+
+#: blog/templates/blog/post/share.html:5
+msgid "E-mail successfully sent"
+msgstr "تم إرسال البريد الإلكتروني بنجاح"
+
+#: blog/templates/blog/post/share.html:7
+msgid "was successfully sent to"
+msgstr "تم إرساله بنجاح إلى"
+
+#: blog/templates/blog/post/share.html:10
+msgid "Share"
+msgstr "شارك"
+
+#: blog/templates/blog/post/share.html:10
+msgid "by e-mail"
+msgstr "بالبريد الإلكتروني"
+
+#: blog/templates/blog/post/share.html:14
+#: blog/templates/registration/password_reset_form.html:9
+msgid "Send e-mail"
+msgstr "أرسل بريد إلكتروني"
+
+#: blog/templates/blog/post/user_detail.html:2
+#: blog/templates/blog/post/user_detail.html:11
+msgid "User Detail"
+msgstr "تفاصيل المستخدم"
+
+#: blog/templates/blog/post/user_detail.html:13
+msgid "Profile Information"
+msgstr "معلومات الملف الشخصي"
+
+#: blog/templates/blog/post/users_list.html:2
+#: blog/templates/blog/post/users_list.html:5
+msgid "All Users"
+msgstr "جميع المستخدمين"
+
+#: blog/templates/blog/post/users_list.html:10
+msgid "No users found."
+msgstr "لم يتم العثور على مستخدمين."
+
+#: blog/templates/blog/register.html:2 blog/templates/blog/register.html:5
+msgid "Create an account"
+msgstr "إنشاء حساب"
+
+#: blog/templates/blog/register.html:6
+msgid "Please sign up using the following form:"
+msgstr "يرجى التسجيل باستخدام النموذج التالي:"
+
+#: blog/templates/blog/register.html:12
+msgid "Please correct the following errors:"
+msgstr "يرجى تصحيح الأخطاء التالية:"
+
+#: blog/templates/blog/register.html:16
+msgid "Create my account"
+msgstr "إنشاء حسابي"
+
+#: blog/templates/blog/register.html:22
+msgid "Sign up with Facebook"
+msgstr "التسجيل باستخدام فيسبوك"
+
+#: blog/templates/blog/register_done.html:2
+#: blog/templates/blog/register_done.html:5
+msgid "Welcome"
+msgstr "مرحبًا"
+
+#: blog/templates/blog/register_done.html:7
+msgid "Your account has been successfully created."
+msgstr "تم إنشاء حسابك بنجاح."
+
+#: blog/templates/blog/register_done.html:8
+msgid "Now you can"
+msgstr "الآن يمكنك"
+
+#: blog/templates/registration/password_reset_form.html:13 blog/templates/blog/register_done.html:8
+msgid "log in"
+msgstr "تسجيل الدخول"
+
+#: blog/templates/pagination.html:7
+msgid "Page"
+msgstr "صفحة"
+
+#: blog/templates/pagination.html:7
+msgid "of"
+msgstr "من"
+
+#: blog/templates/registration/login.html:2
+msgid "Log-in"
+msgstr "تسجيل الدخول"
+
+#: blog/templates/registration/login.html:5
+msgid "Log-in Page"
+msgstr "صفحة تسجيل الدخول"
+
+#: blog/templates/registration/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr "اسم المستخدم وكلمة المرور غير مطابقين. يرجى المحاولة مرة أخرى."
+
+#: blog/templates/registration/login.html:12
+msgid "Please use the following form to log in."
+msgstr "يرجى استخدام النموذج التالي لتسجيل الدخول."
+
+#: blog/templates/registration/login.html:13
+msgid "If you don't"
+msgstr "إذا لم تفعل"
+
+#: blog/templates/registration/login.html:13
+msgid "register here"
+msgstr "سجل هنا"
+
+#: blog/templates/registration/login.html:20
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: blog/templates/registration/login.html:24
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: blog/templates/registration/login.html:29
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: blog/templates/registration/login.html:33
+#: blog/templates/registration/password_reset_form.html:5
+msgid "Forgotten your password?"
+msgstr "هل نسيت كلمة المرور؟"
+
+#: blog/templates/registration/login.html:40
+msgid "Sign in with Facebook"
+msgstr "تسجيل الدخول باستخدام فيسبوك"
+
+#: blog/templates/registration/logout.html:2
+msgid "Log-out"
+msgstr "تسجيل الخروج"
+
+#: blog/templates/registration/logout.html:4
+msgid "Logged out"
+msgstr "تم تسجيل الخروج"
+
+#: blog/templates/registration/logout.html:6
+msgid "You have been successfully logged out."
+msgstr "لقد تم تسجيل الخروج بنجاح."
+
+#: blog/templates/registration/logout.html:7
+msgid "You can"
+msgstr "يمكنك"
+
+#: blog/templates/registration/logout.html:7
+msgid "log-in again"
+msgstr "تسجيل الدخول مرة أخرى"
+
+#: blog/templates/registration/password_change_done.html:2
+#: blog/templates/registration/password_change_done.html:5
+msgid "Password changed"
+msgstr "تم تغيير كلمة المرور"
+
+#: blog/templates/registration/password_change_done.html:6
+msgid "Your password has been successfully changed."
+msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح."
+
+#: blog/templates/registration/password_change_form.html:2
+#: blog/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "تغيير كلمة المرور"
+
+#: blog/templates/registration/password_change_form.html:6
+msgid "Use the form below to change your password."
+msgstr "استخدم النموذج أدناه لتغيير كلمة المرور الخاصة بك."
+
+#: blog/templates/registration/password_change_form.html:9
+msgid "Change"
+msgstr "تغيير"
+
+#: blog/templates/registrationpassword_reset_done.html:2
+#: blog/templates/registration/password_reset_done.html:5
+msgid "Password reset email sent"
+msgstr "تم إرسال رسالة إعادة تعيين كلمة المرور"
+
+#: blog/templates/registration/password_reset_done.html:6
+msgid "An email has been sent to you with instructions on how to reset your password."
+msgstr "تم إرسال بريد إلكتروني إليك يحتوي على تعليمات حول كيفية إعادة تعيين كلمة المرور الخاصة بك."
+
+#: blog/templates/registration/password_reset_form.html:2
+msgid "Reset your password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: blog/templates/registration/password_reset_form.html:6
+msgid "Please enter your new password twice:"
+msgstr "يرجى إدخال كلمة المرور الجديدة مرتين:"
+
+#: blog/templates/registration/password_reset_form.html:9
+msgid "Reset password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: blog/templates/registration/password_reset_form.html:12
+msgid "Your password has been changed."
+msgstr "تم تغيير كلمة المرور الخاصة بك."
+
+#: blog/templates/registration/password_reset_form.html:13
+msgid "You can now"
+msgstr "يمكنك الآن"
+
+
+#: blog/templates/registration/password_reset.html:2
+msgid "Password reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: blog/templates/registration/password_reset.html:6
+msgid "Please enter your email address to reset your password."
+msgstr "يرجى إدخال عنوان البريد الإلكتروني الخاص بك لإعادة تعيين كلمة المرور الخاصة بك."
+
+#: blog/templates/registration/password_reset.html:7
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: blog/templates/registration/password_reset.html:12
+msgid "Reset my password"
+msgstr "إعادة تعيين كلمة المرور الخاصة بي"
+
+#: blog/templates/registration/password_reset.html:15
+msgid "Please check your email for further instructions."
+msgstr "يرجى التحقق من بريدك الإلكتروني لمزيد من التعليمات."
+
+#: blog/templates/registration/password_reset.html:15
+msgid "If you don't receive an email,"
+msgstr "إذا لم تتلقى بريدًا إلكترونيًا،"
+
+#: blog/templates/registration/password_reset.html:15
+msgid "request a new one"
+msgstr "اطلب واحدة جديدة"
+
+#: blog/templates/registration/password_reset.html:18
+msgid "Go back to log-in"
+msgstr "العودة إلى تسجيل الدخول"
+
+
+msgid "Add a new comment"
+msgstr "إضافة تعليق جديد"
+
+
+msgid "Add comment"
+msgstr "إضافة تعليق"
