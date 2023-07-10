@@ -430,3 +430,20 @@ msgstr "إضافة تعليق جديد"
 
 msgid "Add comment"
 msgstr "إضافة تعليق"
+
+
+msgid "If you don't have an account,"
+msgstr "إن كنت لا تملك حسابا"
+
+
+msgid "First Name"
+msgstr "الاسم الأول" 
+
+msgid "Password Again"
+msgstr "كلمة المرور مرة أخرى"
+
+msgid "Next"
+msgstr "التالي"
+
+msgid "Previous"
+msgstr "السابق"

@@ -6,12 +6,12 @@
     <h1>{% trans 'Log-in Page' %}</h1>
     {% if form.errors %}
         <p class="error">
-        {% trans 'Your username and password didn't match. Please try again.' %}
+        {% trans "Your username and password didn't match. Please try again." %}
         </p>
         {% else %}
         <p>
         {% trans 'Please use the following form to log in.' %}
-        {% trans 'If you don't have an account,' %} <a href="{% url 'blog:user_register' %}">{% trans 'register here' %}</a>.
+        {% trans "If you don't have an account," %} <a href="{% url 'blog:user_register' %}">{% trans 'register here' %}</a>.
         </p>
     {% endif %}
     <div class="login-form">

@@ -6,7 +6,26 @@
   <h1>{% trans 'Create an account' %}</h1>
   <p>{% trans 'Please sign up using the following form:' %}</p>
   <form method="post">
-    {{ user_form.as_p }}
+    <div class="form-field">
+      <label for="{{ user_form.username.id_for_label }}">{% trans 'Username' %}:</label>
+      {{ user_form.username }}
+    </div>
+    <div class="form-field">
+      <label for="{{ user_form.first_name.id_for_label }}">{% trans 'First Name' %}:</label>
+      {{ user_form.first_name }}
+    </div>
+    <div class="form-field">
+      <label for="{{ user_form.email.id_for_label }}">{% trans 'Email' %}:</label>
+      {{ user_form.email }}
+    </div>
+    <div class="form-field">
+      <label for="{{ user_form.password1.id_for_label }}">{% trans 'Password' %}:</label>
+      {{ user_form.password1 }}
+    </div>
+    <div class="form-field">
+      <label for="{{ user_form.password2.id_for_label }}">{% trans 'Password Again' %}:</label>
+      {{ user_form.password2 }}
+    </div>
     {% csrf_token %}
     {% if user_form.errors %}
       <div class="errors">
